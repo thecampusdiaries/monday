@@ -1,0 +1,21 @@
+<% layout("/layouts/boilerplate") %>
+
+    <!-- posts/index.ejs -->
+    <h1>Posts for <%= event.name %>
+    </h1>
+
+    <ul>
+        <% event.posts.forEach(post=> { %>
+            <li>
+                <h2>
+                    <%= post.title %>
+                </h2>
+                <p>
+                    <%= post.content %>
+                </p>
+                <!-- You can display more details of the post as needed -->
+            </li>
+            <% }) %>
+    </ul>
+
+    <a href="/events">Back to Events</a>

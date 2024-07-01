@@ -1,0 +1,48 @@
+<% layout("/layouts/boilerplate") %>
+  <body>
+    <div class="row">
+      <div class="col-8 offset-2">
+        <br><br>
+        <h3>Edit this Post</h3>
+        <form class="form-group needs-validation" novalidate action="/posts/<%=post._id%>?_method=PUT" method="POST"
+          enctype="multipart/form-data">
+
+          <div class="mb-3">
+            <label for="title" class="form-label">Event: </label>
+            <input class="form-control" value="<%=post.title%>" name="post[title]" placeholder="Add the event name"
+              type="text" required>
+            <div class="valid-feedback">Title looks good!</div>
+            <div class="invalid-feedback">Title should be valid</div>
+          </div>
+
+          <br><br>
+
+          <div class="mb-3">
+            <label for="caption" class="form-label">Caption : </label>
+            <textarea name="post[caption]" class="form-control" required><%=post.caption%></textarea>
+            <div class="invalid-feedback">Caption should be valid</div>
+          </div>
+
+          <br><br>
+
+          <div class="mb-3">
+            Original Image : <br />
+            <img src="<%=imgUrl%>" alt="<%=post.title%> Image">
+          </div>
+
+          <div class="mb-3">
+            <label for="image" class="form-label">Upload New Image : </label>
+            <input class="form-control" name="post[image]" type="file">
+            <div class="invalid-feedback">Image should be valid</div>
+          </div>
+
+      </div>
+
+      <br><br>
+
+      <button class="add-btn btn btn-dark mb-3">Edit Post</button>
+
+      </form>
+    </div>
+    </div>
+  </body>

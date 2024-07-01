@@ -1,0 +1,88 @@
+<!-- views/index.ejs -->
+
+<% layout("/layouts/boilerplate") %>
+
+    <style>
+        .card {
+            border: none;
+            /* Remove default card border */
+            border-radius: 10px;
+            /* Rounded corners for the card */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            /* Soft shadow */
+            transition: transform 0.3s ease;
+            /* Smooth hover effect */
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            /* Lift the card on hover */
+        }
+
+        .card-img-top {
+            height: 200px;
+            /* Set a fixed height for event images */
+            object-fit: cover;
+            /* Ensure the image covers the area */
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .card-body {
+            padding: 20px;
+            /* Add padding inside the card body */
+        }
+
+        .post-img {
+            height: 100px;
+            /* Set a fixed height for post images */
+            width: 100px;
+            /* Set a fixed width for post images */
+            object-fit: cover;
+            /* Ensure the image covers the area */
+            border-radius: 8px;
+            /* Rounded corners for post images */
+        }
+    </style>
+
+    <div class="container mt-5">
+        <% events.forEach(event=> { %>
+            <div class="card mb-4">
+                <% if (event.image && event.image.url) { %>
+                    <img src="<%= event.image.url %>" class="card-img-top" alt="Event image">
+                    <% } %>
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <%= event.name %>
+                            </h5>
+                            <p class="card-text">
+                                <%= event.description %>
+                            </p>
+                            <p class="card-text">
+                                <small class="text-muted">
+                                    Organized by <%= event.organizer.username %><br>
+                                        Date: <%= event.date.toDateString() %>
+                                </small>
+                            </p>
+                            <h6 class="mt-3">Posts:</h6>
+                            <% event.posts.forEach(post=> { %>
+                                <div class="row mb-3">
+                                    <div class="col-auto">
+                                        <% if (post.image && post.image.url) { %>
+                                            <img src="<%= post.image.url %>" class="post-img" alt="Post image">
+                                            <% } %>
+                                    </div>
+                                    <div class="col">
+                                        <strong>
+                                            <%= post.title %>
+                                        </strong><br>
+                                        <%= post.caption %><br>
+                                            <small class="text-muted">Posted by <%= post.owner.username %></small>
+                                    </div>
+                                </div>
+                                <% }) %>
+                                    <a href="/events/<%= event._id %>" class="btn btn-primary mt-2">View Event</a>
+                        </div>
+            </div>
+            <% }) %>
+    </div>

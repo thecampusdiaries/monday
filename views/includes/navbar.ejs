@@ -1,0 +1,83 @@
+<style>
+    .search-btn {
+        background-color: #fe424d;
+        color: white;
+        border-radius: 50px;
+        padding: 0 1rem;
+        border: 1px solid #222;
+    }
+
+    .search-btn:hover {
+        background-color: #fe424d;
+        color: white;
+    }
+
+    .search-btn i {
+        display: inline;
+        margin-right: 0.5rem;
+    }
+
+    .search-input {
+        border-radius: 50px;
+        padding: 0.5rem 3rem;
+    }
+
+    .profile-pic {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    .profile-dropdown .dropdown-menu {
+        right: 0;
+        left: auto;
+    }
+</style>
+
+<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/explore">
+            <i class="fa-regular fa-compass"></i>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-link" href="/explore">Explore</a>
+            </div>
+
+            <div class="navbar-nav ms-auto">
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2 search-input" type="search" placeholder="Search Destinations">
+                    <button class="btn search-btn" type="submit">
+                        <i class="fa-solid fa-magnifying-glass"></i>Search
+                    </button>
+                </form>
+            </div>
+            <a class="nav-link" href="/events/new">Add e event</a>
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link" href="/posts/new">Make a Post &nbsp;<i class="fa-solid fa-pen-nib"></i></a>
+                <pre>                   </pre>
+                <% if (!currUser) { %>
+                    <a class="nav-link" href="/users/signup"><b>Sign up</b></a>
+                    <a class="nav-link" href="/users/login"><b>Log in</b></a>
+                    <% } else { %>
+                        <div class="nav-item dropdown profile-dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="<%= currUser.profile.profileImage.url %>" alt="Profile Picture"
+                                    class="profile-pic">
+                                <b>@<%= currUser.username %></b>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="/users/<%=currUser._id%>/profile">Profile</a></li>
+                                <li><a class="dropdown-item" href="/users/logout">Log out</a></li>
+                            </ul>
+                        </div>
+                        <% } %>
+            </div>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,43 @@
+<% layout("/layouts/boilerplate") %>
+
+    <body>
+        <div class="row">
+            <div class="col-8 offset-2">
+                <br><br>
+                <h3>Create a New Event</h3>
+                <form action="/events" method="POST" class="form-group needs-validation" novalidate>
+
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Event Name:</label>
+                        <input type="text" name="name" id="name" class="form-control"
+                            placeholder="Add the name of your event" required>
+                        <div class="valid-feedback">Name looks good!</div>
+                        <div class="invalid-feedback">Please provide a valid event name.</div>
+                    </div>
+
+                    <br><br>
+
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Description:</label>
+                        <textarea name="description" id="description" class="form-control"
+                            placeholder="Add a description of your event" required></textarea>
+                        <div class="valid-feedback">Description looks good!</div>
+                        <div class="invalid-feedback">Please provide a valid description.</div>
+                    </div>
+
+                    <br><br>
+
+                    <div class="mb-3">
+                        <label for="date" class="form-label">Date:</label>
+                        <input type="date" name="date" id="date" class="form-control" required>
+                        <div class="valid-feedback">Date looks good!</div>
+                        <div class="invalid-feedback">Please provide a valid date.</div>
+                    </div>
+
+                    <br><br>
+
+                    <button class="add-btn btn btn-dark mb-3" type="submit">Create Event</button>
+                </form>
+            </div>
+        </div>
+    </body>

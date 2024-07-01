@@ -1,0 +1,125 @@
+<% layout("/layouts/boilerplate") %>
+
+    <body>
+        <!-- <h3>All Listings</h3> -->
+        <!-- <style>
+            #filters {
+                display: flex;
+                flex-wrap: nowrap;
+                align-items: center;
+            }
+
+            .filter {
+                margin-top: 1rem;
+                text-align: center;
+                margin-right: 2rem;
+                margin-top: 2rem;
+                opacity: 0.7;
+            }
+
+            .filter:hover {
+                opacity: 1;
+                cursor: pointer;
+            }
+
+            .filter>p {
+                font-size: 0.8rem;
+            }
+
+            .tax-info {
+                display: none;
+                font-size: 0.8rem;
+            }
+            
+            .tax-toggle {
+                border: 1px solid black;
+                border-radius: 1rem;
+                height: 3.25rem;
+                padding: 1rem;
+                margin-left: 2rem;
+                display: flex;
+                align-items: center;
+            }
+        </style>
+        <div id="filters">
+            <div class="filter">
+                <div><i class="fa-solid fa-star"></i></div>
+                <p>Starred</p>
+            </div>
+            <div class="filter">
+                <div><i class="fa-solid fa-fire-flame-curved"></i></div>
+                <p>Trending</p>
+            </div>
+            <div class="filter">
+                <div><i class="fa-solid fa-bed"></i></div>
+                <p>Rooms</p>
+            </div>
+            <div class="filter">
+                <div><i class="fa-solid fa-city"></i></div>
+                <p>Iconic Cities</p>
+            </div>
+            <div class="filter">
+                <div><i class="fa-solid fa-mountain-sun"></i></div>
+                <p>Mountains</p>
+            </div>
+            <div class="filter">
+                <div><i class="fa-solid fa-umbrella-beach"></i></div>
+                <p>Beaches</p>
+            </div>
+            <div class="filter">
+                <div><i class="fa-solid fa-snowflake"></i></div>
+                <p>Arctic</p>
+            </div>
+            <div class="filter">
+                <div><i class="fa-solid fa-water-ladder"></i></div>
+                <p>Pools</p>
+            </div>
+            <div class="filter">
+                <div><i class="fa-solid fa-tent"></i></div>
+                <p>Camping</p>
+            </div>
+            <div class="filter">
+                <div><i class="fa-solid fa-wheat-awn"></i></div>
+                <p>Farms</p>
+            </div>
+            <div class="filter">
+                <div><i class="fa-solid fa-tree"></i></div>
+                <p>Forests</p>
+            </div>
+            <div class="filter">
+                <div><i class="fa-solid fa-football"></i></div>
+                <p>Sporty</p>
+            </div>
+            <div class="filter">
+                <div><i class="fa-solid fa-sailboat"></i></div>
+                <p>Yatch</p>
+            </div>
+
+            <div class="tax-toggle">
+                <div class="form-check-reverse form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                    <label class="form-check-label" for="flexSwitchCheckDefault">Display after Taxes</label>
+                </div>
+            </div>
+        </div> -->
+
+        <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
+            <%for(let post of allPosts) {%>
+                <a class="listing-link" href="/explore/<%=post._id%>">
+                    <div class="card listing-card col">
+                        <img style="height: 20rem;" src="<%=post.image.url%>" class="card-img-top"
+                            alt="<%=post.title%>">
+                        <div class="card-img-overlay"></div>
+                        <div class="card-body">
+                            <p class="card-text">
+                                <i>
+                                    <%=post.caption%>
+                                </i> <br>
+                            </p>
+                        </div>
+                    </div>
+                </a>
+                <%}%>
+        </div>
+
+    </body>
